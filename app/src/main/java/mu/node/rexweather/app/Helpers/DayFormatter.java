@@ -19,8 +19,8 @@ public class DayFormatter {
     }
 
     /**
-     * Format a Unix timestamp into a human readable week day String such as "Today", "Tomorrow",
-     * "Wednesday" and "Next Thursday".
+     * Format a Unix timestamp into a human readable week day String such as "Today", "Tomorrow"
+     * and "Wednesday"
      */
     public String format(final long unixTimestamp) {
         final long milliseconds = unixTimestamp * MILLISECONDS_IN_SECONDS;
