@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/day"
+        android:text="Monday"
+        android:layout_weight="3"
+        android:layout_marginRight="20dp"
+        style="@style/WeatherForecastListItemText" />
+
+    <TextView
+        android:id="@+id/description"
+        android:text="sky is clear"
+        android:layout_weight="5"
+        style="@style/WeatherForecastListItemText" />
+
+    <TextView
+        android:id="@+id/maximum_temperature"
+        android:text="19°"
+        android:layout_weight="1"
+        style="@style/WeatherForecastListItemTextEmphasis" />
+
+    <TextView
+        android:id="@+id/minimum_temperature"
+        android:text="15°"
+        android:layout_weight="1"
+        style="@style/WeatherForecastListItemTextDeEmphasis" />
+
+</LinearLayout>

@@ -1,0 +1,47 @@
+<resources>
+
+    <style name="AppTheme" parent="android:Theme.Holo.Light">
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="BaseText" parent="android:TextAppearance.Holo.Large">
+        <item name="android:textColor">@color/text</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:ellipsize">marquee</item>
+    </style>
+
+    <style name="LocationText" parent="BaseText">
+        <item name="android:textSize">@dimen/location_text</item>
+        <item name="android:ellipsize">none</item>
+    </style>
+
+    <style name="CurrentTemperatureText" parent="BaseText">
+        <item name="android:textSize">@dimen/current_temperature_text</item>
+        <item name="android:textColor">@color/brand_main</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">none</item>
+    </style>
+
+    <style name="WeatherForecastListItemText" parent="BaseText">
+        <item name="android:textSize">@dimen/weather_forecast_list_item_text</item>
+        <item name="android:paddingTop">@dimen/list_item_text_padding</item>
+        <item name="android:paddingBottom">@dimen/list_item_text_padding</item>
+        <item name="android:layout_width">0dp</item>  <!-- To force the text views into columns -->
+    </style>
+
+    <style name="WeatherForecastListItemTextEmphasis" parent="WeatherForecastListItemText">
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="WeatherForecastListItemTextDeEmphasis" parent="WeatherForecastListItemText">
+        <item name="android:textColor">@color/text_de_emphasized</item>
+    </style>
+
+    <style name="AttributionText" parent="BaseText">
+        <item name="android:textSize">@dimen/attribution_text</item>
+        <item name="android:textColor">@color/text_faint</item>
+    </style>
+
+</resources>
