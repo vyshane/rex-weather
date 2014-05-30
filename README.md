@@ -1,5 +1,8 @@
 # RexWeather - A sample Android project demonstrating the use of Retrofit and RxJava to interact with web services 
+
 This document is a work in progress. My aim is to write a tutorial that takes the reader through the implementation of the RexWeather app.
+
+![RexWeather Screenwhot](http://www.node.mu/images/rexweather.png)
 
 ## Retrofit, by Square
 [Retrofit](http://square.github.io/retrofit) is a REST client for Android and Java. It allows you to turn a REST API into a Java interface by using annotations to describe the HTTP requests. It can then generate an implementation of the interface for you. This means that you can go from `GET /users/{userId}/posts` to `webService.fetchUserPosts(userId)` in a few lines of code. Retrofit is very easy to use and it integrates well with RxJava.
