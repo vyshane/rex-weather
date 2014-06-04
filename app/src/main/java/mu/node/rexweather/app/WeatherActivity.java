@@ -87,7 +87,7 @@ public class WeatherActivity extends Activity {
             // Set up list view for weather forecasts.
             mForecastListView = (ListView) rootView.findViewById(R.id.weather_forecast_list);
             final WeatherForecastListAdapter adapter = new WeatherForecastListAdapter(
-                    new ArrayList<WeatherForecast>());
+                    new ArrayList<WeatherForecast>(), getActivity());
             mForecastListView.setAdapter(adapter);
 
             mAttributionTextView = (TextView) rootView.findViewById(R.id.attribution);
@@ -121,31 +121,10 @@ public class WeatherActivity extends Activity {
          * Provides items for our list view.
          */
         private class WeatherForecastListAdapter extends ArrayAdapter {
-            private List<WeatherForecast> mWeatherForecasts;
 
-            public WeatherForecastListAdapter(List<WeatherForecast> weatherForecasts) {
-                super(getActivity(), 0, weatherForecasts);
-                mWeatherForecasts = weatherForecasts;
-            }
-
-            public void updateForecasts(List<WeatherForecast> forecasts) {
-                mWeatherForecasts = forecasts;
-                notifyDataSetChanged();
-            }
-
-            @Override
-            public int getCount() {
-                return mWeatherForecasts.size();
-            }
-
-            @Override
-            public WeatherForecast getItem(final int position) {
-                return mWeatherForecasts.get(position);
-            }
-
-            @Override
-            public long getItemId(final int position) {
-                return position;
+            public WeatherForecastListAdapter(List<WeatherForecast> weatherForecasts,
+                                              Context context) {
+                super(context, 0, weatherForecasts);
             }
 
             @Override
@@ -158,8 +137,8 @@ public class WeatherActivity extends Activity {
                 ViewHolder viewHolder;
 
                 if (convertView == null) {
-                    convertView = getActivity().getLayoutInflater()
-                            .inflate(R.layout.weather_forecast_list_item, null);
+                    LayoutInflater layoutInflater = LayoutInflater.from(getContext());
+                    convertView = layoutInflater.inflate(R.layout.weather_forecast_list_item, null);
 
                     viewHolder = new ViewHolder();
                     viewHolder.dayTextView = (TextView) convertView.findViewById(R.id.day);
@@ -174,7 +153,7 @@ public class WeatherActivity extends Activity {
                     viewHolder = (ViewHolder) convertView.getTag();
                 }
 
-                WeatherForecast weatherForecast = getItem(position);
+                WeatherForecast weatherForecast = (WeatherForecast) getItem(position);
 
                 DayFormatter dayFormatter = new DayFormatter(getActivity());
                 final String day = dayFormatter.format(weatherForecast.getTimestamp());
@@ -277,8 +256,10 @@ public class WeatherActivity extends Activity {
                             // Update weather forecast list.
                             final List<WeatherForecast> weatherForecasts = (List<WeatherForecast>)
                                     weatherData.get(KEY_WEATHER_FORECASTS);
-                            ((WeatherForecastListAdapter) mForecastListView.getAdapter())
-                                    .updateForecasts(weatherForecasts);
+                            final WeatherForecastListAdapter adapter = (WeatherForecastListAdapter)
+                                    mForecastListView.getAdapter();
+                            adapter.clear();
+                            adapter.addAll(weatherForecasts);
                         }
                     })
             );
