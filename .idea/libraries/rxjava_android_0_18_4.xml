@@ -4,6 +4,8 @@
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.netflix.rxjava/rxjava-android/0.18.4/50cb48dbebf2dec503586fcb268574c0f155cac7/rxjava-android-0.18.4.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.netflix.rxjava/rxjava-android/0.18.4/db33b470596c9bbbd4db8f657c3dcbf0f1fb3559/rxjava-android-0.18.4-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

@@ -4,7 +4,6 @@
     <exclude-output />
     <content url="file://$USER_HOME$/Dropbox (Personal)/Projects/RexWeather">
       <excludeFolder url="file://$USER_HOME$/Dropbox (Personal)/Projects/RexWeather/.gradle" />
-      <excludeFolder url="file://$USER_HOME$/Dropbox (Personal)/Projects/RexWeather/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
