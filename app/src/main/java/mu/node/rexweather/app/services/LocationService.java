@@ -1,4 +1,4 @@
-package mu.node.rexweather.app.services;
+package mu.node.rexweather.app.Services;
 
 import android.location.Criteria;
 import android.location.Location;

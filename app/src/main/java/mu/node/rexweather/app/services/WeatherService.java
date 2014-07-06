@@ -1,4 +1,4 @@
-package mu.node.rexweather.app.services;
+package mu.node.rexweather.app.Services;
 
 import com.google.gson.annotations.SerializedName;
 
