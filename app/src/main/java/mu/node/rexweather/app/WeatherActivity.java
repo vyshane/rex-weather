@@ -17,6 +17,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
@@ -25,7 +27,6 @@ import mu.node.rexweather.app.Helpers.TemperatureFormatter;
 import mu.node.rexweather.app.Models.CurrentWeather;
 import mu.node.rexweather.app.Models.WeatherForecast;
 import mu.node.rexweather.app.services.LocationService;
-import mu.node.rexweather.app.services.LocationUnavailableException;
 import mu.node.rexweather.app.services.WeatherService;
 import retrofit.RetrofitError;
 import rx.Observable;
@@ -67,6 +68,7 @@ public class WeatherActivity extends Activity {
 
         private static final String KEY_CURRENT_WEATHER = "key_current_weather";
         private static final String KEY_WEATHER_FORECASTS = "key_weather_forecasts";
+        private static final long LOCATION_TIMEOUT_SECONDS = 20;
 
         private final CompositeSubscription mCompositeSubscription = new CompositeSubscription();
         private SwipeRefreshLayout mSwipeRefreshLayout;
@@ -190,6 +192,7 @@ public class WeatherActivity extends Activity {
 
             // Get our current location.
             final Observable fetchDataObservable = locationService.getLocation()
+            .timeout(LOCATION_TIMEOUT_SECONDS, TimeUnit.SECONDS)
             .flatMap(new Func1<Location, Observable<?>>() {
                 @Override
                 public Observable<?> call(Location location) {
@@ -219,7 +222,7 @@ public class WeatherActivity extends Activity {
             });
 
             mCompositeSubscription.add(fetchDataObservable
-                    .subscribeOn(Schedulers.io())
+                    .subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new Subscriber<HashMap>() {
                         @Override
@@ -232,7 +235,7 @@ public class WeatherActivity extends Activity {
                         public void onError(final Throwable error) {
                             mSwipeRefreshLayout.setRefreshing(false);
 
-                            if (error instanceof LocationUnavailableException) {
+                            if (error instanceof TimeoutException) {
                                 Crouton.makeText(getActivity(),
                                         R.string.error_location_unavailable, Style.ALERT).show();
                             } else if (error instanceof RetrofitError) {

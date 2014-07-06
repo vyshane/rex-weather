@@ -21,8 +21,9 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:19.+'
-    compile 'com.netflix.rxjava:rxjava-android:0.18.+'
-    compile 'com.squareup.retrofit:retrofit:1.5.+'
-    compile 'com.squareup.okhttp:okhttp:1.6.+'
+    compile 'com.netflix.rxjava:rxjava-android:0.19.+'
+    compile 'com.squareup.retrofit:retrofit:1.6.+'
+    compile 'com.squareup.okhttp:okhttp:2.0.+'
+    compile 'com.squareup.okhttp:okhttp-urlconnection:2.0.+'
     compile 'de.keyboardsurfer.android.widget:crouton:1.8.+'
 }

@@ -36,11 +36,7 @@ public class LocationService {
 
                     public void onStatusChanged(String provider, int status, Bundle extras) { }
                     public void onProviderEnabled(String provider) { }
-
-                    public void onProviderDisabled(String provider) {
-                        subscriber.onError(new LocationUnavailableException(
-                                "Could not find current location"));
-                    }
+                    public void onProviderDisabled(String provider) { }
                 };
 
                 final Criteria locationCriteria = new Criteria();
