@@ -226,6 +226,24 @@ public class WeatherActivity extends Activity {
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new Subscriber<HashMap>() {
                         @Override
+                        public void onNext(final HashMap weatherData) {
+                            // Update UI with current weather.
+                            final CurrentWeather currentWeather = (CurrentWeather) weatherData
+                                    .get(KEY_CURRENT_WEATHER);
+                            mLocationNameTextView.setText(currentWeather.getLocationName());
+                            mCurrentTemperatureTextView.setText(
+                                    TemperatureFormatter.format(currentWeather.getTemperature()));
+
+                            // Update weather forecast list.
+                            final List<WeatherForecast> weatherForecasts = (List<WeatherForecast>)
+                                    weatherData.get(KEY_WEATHER_FORECASTS);
+                            final WeatherForecastListAdapter adapter = (WeatherForecastListAdapter)
+                                    mForecastListView.getAdapter();
+                            adapter.clear();
+                            adapter.addAll(weatherForecasts);
+                        }
+
+                        @Override
                         public void onCompleted() {
                             mSwipeRefreshLayout.setRefreshing(false);
                             mAttributionTextView.setVisibility(View.VISIBLE);
@@ -245,24 +263,6 @@ public class WeatherActivity extends Activity {
                                 error.printStackTrace();
                                 throw new RuntimeException("See inner exception");
                             }
-                        }
-
-                        @Override
-                        public void onNext(final HashMap weatherData) {
-                            // Update UI with current weather.
-                            final CurrentWeather currentWeather = (CurrentWeather) weatherData
-                                    .get(KEY_CURRENT_WEATHER);
-                            mLocationNameTextView.setText(currentWeather.getLocationName());
-                            mCurrentTemperatureTextView.setText(
-                                    TemperatureFormatter.format(currentWeather.getTemperature()));
-
-                            // Update weather forecast list.
-                            final List<WeatherForecast> weatherForecasts = (List<WeatherForecast>)
-                                    weatherData.get(KEY_WEATHER_FORECASTS);
-                            final WeatherForecastListAdapter adapter = (WeatherForecastListAdapter)
-                                    mForecastListView.getAdapter();
-                            adapter.clear();
-                            adapter.addAll(weatherForecasts);
                         }
                     })
             );
