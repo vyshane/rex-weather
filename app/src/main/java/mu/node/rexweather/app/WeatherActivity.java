@@ -14,6 +14,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import org.apache.http.HttpException;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -256,7 +258,8 @@ public class WeatherActivity extends Activity {
                             if (error instanceof TimeoutException) {
                                 Crouton.makeText(getActivity(),
                                         R.string.error_location_unavailable, Style.ALERT).show();
-                            } else if (error instanceof RetrofitError) {
+                            } else if (error instanceof RetrofitError
+                                    || error instanceof HttpException) {
                                 Crouton.makeText(getActivity(),
                                         R.string.error_fetch_weather, Style.ALERT).show();
                             } else {
