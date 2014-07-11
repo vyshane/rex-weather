@@ -56,23 +56,8 @@
       <sourceFolder url="file://$MODULE_DIR$/src/androidTest/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTest/jni" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTest/rs" isTestSource="true" />
-      <excludeFolder url="file://$MODULE_DIR$/build/apk" />
-      <excludeFolder url="file://$MODULE_DIR$/build/assets" />
-      <excludeFolder url="file://$MODULE_DIR$/build/classes" />
-      <excludeFolder url="file://$MODULE_DIR$/build/dependency-cache" />
-      <excludeFolder url="file://$MODULE_DIR$/build/dex" />
-      <excludeFolder url="file://$MODULE_DIR$/build/exploded-aar" />
-      <excludeFolder url="file://$MODULE_DIR$/build/incremental" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates" />
-      <excludeFolder url="file://$MODULE_DIR$/build/libs" />
-      <excludeFolder url="file://$MODULE_DIR$/build/manifests" />
-      <excludeFolder url="file://$MODULE_DIR$/build/ndk" />
       <excludeFolder url="file://$MODULE_DIR$/build/outputs" />
-      <excludeFolder url="file://$MODULE_DIR$/build/pre-dexed" />
-      <excludeFolder url="file://$MODULE_DIR$/build/res" />
-      <excludeFolder url="file://$MODULE_DIR$/build/rs" />
-      <excludeFolder url="file://$MODULE_DIR$/build/source" />
-      <excludeFolder url="file://$MODULE_DIR$/build/symbols" />
     </content>
     <orderEntry type="jdk" jdkName="Android API 19 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -80,11 +65,11 @@
     <orderEntry type="library" exported="" name="retrofit-1.6.1" level="project" />
     <orderEntry type="library" exported="" name="gson-2.2.4" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-19.1.0" level="project" />
-    <orderEntry type="library" exported="" name="rxjava-android-0.19.2" level="project" />
     <orderEntry type="library" exported="" name="support-v4-19.1.0" level="project" />
     <orderEntry type="library" exported="" name="okio-1.0.0" level="project" />
-    <orderEntry type="library" exported="" name="rxjava-core-0.19.2" level="project" />
+    <orderEntry type="library" exported="" name="rxjava-android-0.19.6" level="project" />
     <orderEntry type="library" exported="" name="okhttp-2.0.0" level="project" />
+    <orderEntry type="library" exported="" name="rxjava-core-0.19.6" level="project" />
     <orderEntry type="library" exported="" name="crouton-1.8.4" level="project" />
   </component>
 </module>
