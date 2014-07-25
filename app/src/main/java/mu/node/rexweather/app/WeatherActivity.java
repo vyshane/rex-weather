@@ -49,7 +49,7 @@ import rx.subscriptions.CompositeSubscription;
 public class WeatherActivity extends Activity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
 
@@ -100,7 +100,7 @@ public class WeatherActivity extends Activity {
             // Set up swipe refresh layout.
             mSwipeRefreshLayout = (SwipeRefreshLayout) rootView
                     .findViewById(R.id.swipe_refresh_container);
-            mSwipeRefreshLayout.setColorScheme(R.color.brand_main,
+            mSwipeRefreshLayout.setColorSchemeResources(R.color.brand_main,
                     android.R.color.black,
                     R.color.brand_main,
                     android.R.color.black);
@@ -126,13 +126,13 @@ public class WeatherActivity extends Activity {
          */
         private class WeatherForecastListAdapter extends ArrayAdapter {
 
-            public WeatherForecastListAdapter(List<WeatherForecast> weatherForecasts,
-                                              Context context) {
+            public WeatherForecastListAdapter(final List<WeatherForecast> weatherForecasts,
+                                              final Context context) {
                 super(context, 0, weatherForecasts);
             }
 
             @Override
-            public boolean isEnabled(int position) {
+            public boolean isEnabled(final int position) {
                 return false;
             }
 
@@ -141,7 +141,7 @@ public class WeatherActivity extends Activity {
                 ViewHolder viewHolder;
 
                 if (convertView == null) {
-                    LayoutInflater layoutInflater = LayoutInflater.from(getContext());
+                    final LayoutInflater layoutInflater = LayoutInflater.from(getContext());
                     convertView = layoutInflater.inflate(R.layout.weather_forecast_list_item, null);
 
                     viewHolder = new ViewHolder();
@@ -157,9 +157,9 @@ public class WeatherActivity extends Activity {
                     viewHolder = (ViewHolder) convertView.getTag();
                 }
 
-                WeatherForecast weatherForecast = (WeatherForecast) getItem(position);
+                final WeatherForecast weatherForecast = (WeatherForecast) getItem(position);
 
-                DayFormatter dayFormatter = new DayFormatter(getActivity());
+                final DayFormatter dayFormatter = new DayFormatter(getActivity());
                 final String day = dayFormatter.format(weatherForecast.getTimestamp());
                 viewHolder.dayTextView.setText(day);
                 viewHolder.descriptionTextView.setText(weatherForecast.getDescription());
@@ -197,7 +197,7 @@ public class WeatherActivity extends Activity {
             .timeout(LOCATION_TIMEOUT_SECONDS, TimeUnit.SECONDS)
             .flatMap(new Func1<Location, Observable<?>>() {
                 @Override
-                public Observable<?> call(Location location) {
+                public Observable<?> call(final Location location) {
                     final WeatherService weatherService = new WeatherService();
                     final double longitude = location.getLongitude();
                     final double latitude = location.getLatitude();
