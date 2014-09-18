@@ -195,9 +195,9 @@ public class WeatherActivity extends Activity {
             // Get our current location.
             final Observable fetchDataObservable = locationService.getLocation()
             .timeout(LOCATION_TIMEOUT_SECONDS, TimeUnit.SECONDS)
-            .flatMap(new Func1<Location, Observable<?>>() {
+            .flatMap(new Func1<Location, Observable<HashMap<String, WeatherForecast>>>() {
                 @Override
-                public Observable<?> call(final Location location) {
+                public Observable<HashMap<String, WeatherForecast>> call(final Location location) {
                     final WeatherService weatherService = new WeatherService();
                     final double longitude = location.getLongitude();
                     final double latitude = location.getLatitude();
@@ -208,9 +208,10 @@ public class WeatherActivity extends Activity {
                             weatherService.fetchWeatherForecasts(longitude, latitude),
 
                             // Only handle the fetched results when both sets are available.
-                            new Func2<CurrentWeather, List<WeatherForecast>, Object>() {
+                            new Func2<CurrentWeather, List<WeatherForecast>,
+                                    HashMap<String, WeatherForecast>>() {
                                 @Override
-                                public Object call(final CurrentWeather currentWeather,
+                                public HashMap call(final CurrentWeather currentWeather,
                                                    final List<WeatherForecast> weatherForecasts) {
 
                                     HashMap weatherData = new HashMap();
@@ -226,9 +227,9 @@ public class WeatherActivity extends Activity {
             mCompositeSubscription.add(fetchDataObservable
                     .subscribeOn(Schedulers.newThread())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new Subscriber<HashMap>() {
+                    .subscribe(new Subscriber<HashMap<String, WeatherForecast>>() {
                         @Override
-                        public void onNext(final HashMap weatherData) {
+                        public void onNext(final HashMap<String, WeatherForecast> weatherData) {
                             // Update UI with current weather.
                             final CurrentWeather currentWeather = (CurrentWeather) weatherData
                                     .get(KEY_CURRENT_WEATHER);
