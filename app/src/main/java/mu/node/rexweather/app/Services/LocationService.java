@@ -40,7 +40,7 @@ public class LocationService {
                 };
 
                 final Criteria locationCriteria = new Criteria();
-                locationCriteria.setAccuracy(Criteria.ACCURACY_FINE);
+                locationCriteria.setAccuracy(Criteria.ACCURACY_COARSE);
                 locationCriteria.setPowerRequirement(Criteria.POWER_LOW);
                 final String locationProvider = mLocationManager
                         .getBestProvider(locationCriteria, true);
