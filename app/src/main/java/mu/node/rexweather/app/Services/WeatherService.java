@@ -122,7 +122,7 @@ public class WeatherService {
          */
         public Observable filterWebServiceErrors() {
             if (httpCode == 200) {
-                return Observable.from(this);
+                return Observable.just(this);
             } else {
                 return Observable.error(
                         new HttpException("There was a problem fetching the weather data."));
