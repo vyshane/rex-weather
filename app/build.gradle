@@ -1,5 +1,5 @@
 apply plugin: 'android'
-
+apply plugin: 'retrolambda'
 android {
     compileSdkVersion 20
     buildToolsVersion "20"
@@ -13,12 +13,6 @@ android {
     lintOptions {
         disable 'InvalidPackage'
         abortOnError false
-    }
-    buildTypes {
-        release {
-            runProguard false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
-        }
     }
 }
 
