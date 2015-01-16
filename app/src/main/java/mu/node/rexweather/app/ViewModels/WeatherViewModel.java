@@ -8,8 +8,7 @@ import rx.Observable;
 import java.util.List;
 
 /**
- * Created by 田洪晖 on 1/15/15.
- * mail:tianhonghui@meituan.com
+ * Created by Zack on 1/15/15.
  */
 public class WeatherViewModel {
     private Observable<CurrentWeather> currentWeather;
@@ -29,7 +28,6 @@ public class WeatherViewModel {
     }
 
     public WeatherViewModel setRefreshSignal(Observable<RefreshEvent> refreshEventObservable) {
-        //这里接受一个刷新的stream，配置handle方法
         currentWeather = refreshEventObservable
                 .flatMap(location -> weatherService.fetchCurrentWeather(116.0, 32.0));
 
