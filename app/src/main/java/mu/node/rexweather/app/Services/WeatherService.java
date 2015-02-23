@@ -51,66 +51,67 @@ public class WeatherService {
     public Observable<CurrentWeather> fetchCurrentWeather(final double longitude,
                                                           final double latitude) {
         return mWebService.fetchCurrentWeather(longitude, latitude)
-        .flatMap(new Func1<CurrentWeatherDataEnvelope,
-                Observable<? extends CurrentWeatherDataEnvelope>>() {
+                .flatMap(new Func1<CurrentWeatherDataEnvelope,
+                        Observable<? extends CurrentWeatherDataEnvelope>>() {
 
-            // Error out if the request was not successful.
-            @Override
-            public Observable<? extends CurrentWeatherDataEnvelope> call(
-                    final CurrentWeatherDataEnvelope data) {
-                return data.filterWebServiceErrors();
-            }
+                    // Error out if the request was not successful.
+                    @Override
+                    public Observable<? extends CurrentWeatherDataEnvelope> call(
+                            final CurrentWeatherDataEnvelope data) {
+                        return data.filterWebServiceErrors();
+                    }
 
-        }).map(new Func1<CurrentWeatherDataEnvelope, CurrentWeather>() {
+                }).map(new Func1<CurrentWeatherDataEnvelope, CurrentWeather>() {
 
-            // Parse the result and build a CurrentWeather object.
-            @Override
-            public CurrentWeather call(final CurrentWeatherDataEnvelope data) {
-                return new CurrentWeather(data.locationName, data.timestamp,
-                        data.weather.get(0).description, data.main.temp,
-                        data.main.temp_min, data.main.temp_max);
-            }
-        });
+                    // Parse the result and build a CurrentWeather object.
+                    @Override
+                    public CurrentWeather call(final CurrentWeatherDataEnvelope data) {
+                        return new CurrentWeather(data.locationName, data.timestamp,
+                                data.weather.get(0).description, data.main.temp,
+                                data.main.temp_min, data.main.temp_max);
+                    }
+                });
     }
 
     public Observable<List<WeatherForecast>> fetchWeatherForecasts(final double longitude,
                                                                    final double latitude) {
         return mWebService.fetchWeatherForecasts(longitude, latitude)
-        .flatMap(new Func1<WeatherForecastListDataEnvelope,
-                Observable<? extends WeatherForecastListDataEnvelope>>() {
+                .flatMap(new Func1<WeatherForecastListDataEnvelope,
+                        Observable<? extends WeatherForecastListDataEnvelope>>() {
 
-            // Error out if the request was not successful.
-            @Override
-            public Observable<? extends WeatherForecastListDataEnvelope> call(
-                    final WeatherForecastListDataEnvelope listData) {
-                return listData.filterWebServiceErrors();
-            }
+                    // Error out if the request was not successful.
+                    @Override
+                    public Observable<? extends WeatherForecastListDataEnvelope> call(
+                            final WeatherForecastListDataEnvelope listData) {
+                        return listData.filterWebServiceErrors();
+                    }
 
-        }).map(new Func1<WeatherForecastListDataEnvelope, List<WeatherForecast>>() {
+                }).map(new Func1<WeatherForecastListDataEnvelope, List<WeatherForecast>>() {
 
-            // Parse the result and build a list of WeatherForecast objects.
-            @Override
-            public List<WeatherForecast> call(final WeatherForecastListDataEnvelope listData) {
-                final ArrayList<WeatherForecast> weatherForecasts =
-                        new ArrayList<WeatherForecast>();
+                    // Parse the result and build a list of WeatherForecast objects.
+                    @Override
+                    public List<WeatherForecast> call(final WeatherForecastListDataEnvelope listData) {
+                        final ArrayList<WeatherForecast> weatherForecasts =
+                                new ArrayList<WeatherForecast>();
 
-                for (WeatherForecastListDataEnvelope.ForecastDataEnvelope data : listData.list) {
-                    final WeatherForecast weatherForecast = new WeatherForecast(
-                            listData.city.name, data.timestamp, data.weather.get(0).description,
-                            data.temp.min, data.temp.max);
-                    weatherForecasts.add(weatherForecast);
-                }
+                        for (WeatherForecastListDataEnvelope.ForecastDataEnvelope data : listData.list) {
+                            final WeatherForecast weatherForecast = new WeatherForecast(
+                                    listData.city.name, data.timestamp, data.weather.get(0).description,
+                                    data.temp.min, data.temp.max);
+                            weatherForecasts.add(weatherForecast);
+                        }
 
-                return weatherForecasts;
-            }
-        });
+                        return weatherForecasts;
+                    }
+                });
     }
 
     /**
      * Base class for results returned by the weather web service.
      */
     private class WeatherDataEnvelope {
-        @SerializedName("cod") private int httpCode;
+        @SerializedName("cod")
+        private int httpCode;
 
         class Weather {
             public String description;
@@ -134,8 +135,10 @@ public class WeatherService {
      * Data structure for current weather results returned by the web service.
      */
     private class CurrentWeatherDataEnvelope extends WeatherDataEnvelope {
-        @SerializedName("name") public String locationName;
-        @SerializedName("dt") public long timestamp;
+        @SerializedName("name")
+        public String locationName;
+        @SerializedName("dt")
+        public long timestamp;
         public ArrayList<Weather> weather;
         public Main main;
 
@@ -158,7 +161,8 @@ public class WeatherService {
         }
 
         class ForecastDataEnvelope {
-            @SerializedName("dt") public long timestamp;
+            @SerializedName("dt")
+            public long timestamp;
             public Temperature temp;
             public ArrayList<Weather> weather;
         }
