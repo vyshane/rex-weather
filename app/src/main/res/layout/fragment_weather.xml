@@ -35,7 +35,8 @@
                     android:id="@+id/location_name"
                     style="@style/LocationText"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:layout_width="0dp" />
 
                 <TextView
                     android:id="@+id/current_temperature"

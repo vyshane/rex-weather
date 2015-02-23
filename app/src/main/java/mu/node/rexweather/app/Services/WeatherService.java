@@ -92,7 +92,7 @@ public class WeatherService {
                     @Override
                     public List<WeatherForecast> call(final WeatherForecastListDataEnvelope listData) {
                         final ArrayList<WeatherForecast> weatherForecasts =
-                                new ArrayList<WeatherForecast>();
+                                new ArrayList<>();
 
                         for (WeatherForecastListDataEnvelope.ForecastDataEnvelope data : listData.list) {
                             final WeatherForecast weatherForecast = new WeatherForecast(
