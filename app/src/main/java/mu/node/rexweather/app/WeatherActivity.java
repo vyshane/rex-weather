@@ -7,6 +7,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,6 +72,7 @@ public class WeatherActivity extends Activity {
         private static final String KEY_CURRENT_WEATHER = "key_current_weather";
         private static final String KEY_WEATHER_FORECASTS = "key_weather_forecasts";
         private static final long LOCATION_TIMEOUT_SECONDS = 20;
+        private static final String TAG = WeatherFragment.class.getCanonicalName();
 
         private final CompositeSubscription mCompositeSubscription = new CompositeSubscription();
         private SwipeRefreshLayout mSwipeRefreshLayout;
@@ -175,10 +177,10 @@ public class WeatherActivity extends Activity {
              * Cache to avoid doing expensive findViewById() calls for each getView().
              */
             private class ViewHolder {
-                TextView dayTextView;
-                TextView descriptionTextView;
-                TextView maximumTemperatureTextView;
-                TextView minimumTemperatureTextView;
+                private TextView dayTextView;
+                private TextView descriptionTextView;
+                private TextView maximumTemperatureTextView;
+                private TextView minimumTemperatureTextView;
             }
         }
 
@@ -264,6 +266,7 @@ public class WeatherActivity extends Activity {
                                         Crouton.makeText(getActivity(),
                                                 R.string.error_fetch_weather, Style.ALERT).show();
                                     } else {
+                                        Log.e(TAG, error.getMessage());
                                         error.printStackTrace();
                                         throw new RuntimeException("See inner exception");
                                     }
