@@ -1,5 +1,4 @@
-<android.support.v4.widget.SwipeRefreshLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="mu.node.rexweather.app.WeatherActivity$PlaceholderFragment"
     android:id="@+id/swipe_refresh_container"
@@ -17,8 +16,7 @@
         android:clickable="true">  <!-- Clickable to fix unresponsive SwipeRefreshLayout -->
 
         <!-- Container enforces relative positioning of header and list of forecasts -->
-        <LinearLayout
-            xmlns:tools="http://schemas.android.com/tools"
+        <LinearLayout xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/weather_container_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -37,7 +35,8 @@
                     android:id="@+id/location_name"
                     style="@style/LocationText"
                     android:layout_gravity="center_vertical"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:layout_width="0dp" />
 
                 <TextView
                     android:id="@+id/current_temperature"

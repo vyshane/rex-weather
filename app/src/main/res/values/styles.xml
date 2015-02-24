@@ -28,7 +28,8 @@
         <item name="android:textSize">@dimen/weather_forecast_list_item_text</item>
         <item name="android:paddingTop">@dimen/list_item_text_padding</item>
         <item name="android:paddingBottom">@dimen/list_item_text_padding</item>
-        <item name="android:layout_width">0dp</item>  <!-- To force the text views into columns -->
+        <item name="android:layout_width">0dp</item>
+        <!-- To force the text views into columns -->
     </style>
 
     <style name="WeatherForecastListItemTextEmphasis" parent="WeatherForecastListItemText">

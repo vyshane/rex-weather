@@ -7,26 +7,26 @@
 
     <TextView
         android:id="@+id/day"
-        android:text="Monday"
+        android:text="@string/monday"
         android:layout_weight="3"
         android:layout_marginRight="20dp"
         style="@style/WeatherForecastListItemText" />
 
     <TextView
         android:id="@+id/description"
-        android:text="sky is clear"
+        android:text="@string/sky_is_clear"
         android:layout_weight="5"
         style="@style/WeatherForecastListItemText" />
 
     <TextView
         android:id="@+id/maximum_temperature"
-        android:text="19°"
+        android:text="@string/nineteen_degrees"
         android:layout_weight="1"
         style="@style/WeatherForecastListItemTextEmphasis" />
 
     <TextView
         android:id="@+id/minimum_temperature"
-        android:text="15°"
+        android:text="@string/fifteen_degrees"
         android:layout_weight="1"
         style="@style/WeatherForecastListItemTextDeEmphasis" />
 

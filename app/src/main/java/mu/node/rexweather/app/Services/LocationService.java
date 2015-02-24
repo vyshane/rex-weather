@@ -34,9 +34,14 @@ public class LocationService {
                         Looper.myLooper().quit();
                     }
 
-                    public void onStatusChanged(String provider, int status, Bundle extras) { }
-                    public void onProviderEnabled(String provider) { }
-                    public void onProviderDisabled(String provider) { }
+                    public void onStatusChanged(String provider, int status, Bundle extras) {
+                    }
+
+                    public void onProviderEnabled(String provider) {
+                    }
+
+                    public void onProviderDisabled(String provider) {
+                    }
                 };
 
                 final Criteria locationCriteria = new Criteria();
