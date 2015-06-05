@@ -120,7 +120,7 @@ public class WeatherActivity extends Activity {
         @Override
         public void onDestroyView() {
             mCompositeSubscription.unsubscribe();
-            super.onDestroy();
+            super.onDestroyView();
         }
 
         /**
