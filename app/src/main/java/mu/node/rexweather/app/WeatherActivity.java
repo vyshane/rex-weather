@@ -74,7 +74,7 @@ public class WeatherActivity extends Activity {
         private static final long LOCATION_TIMEOUT_SECONDS = 20;
         private static final String TAG = WeatherFragment.class.getCanonicalName();
 
-        private final CompositeSubscription mCompositeSubscription = new CompositeSubscription();
+        private CompositeSubscription mCompositeSubscription;
         private SwipeRefreshLayout mSwipeRefreshLayout;
         private TextView mLocationNameTextView;
         private TextView mCurrentTemperatureTextView;
@@ -84,6 +84,7 @@ public class WeatherActivity extends Activity {
         @Override
         public View onCreateView(final LayoutInflater inflater, final ViewGroup container,
                                  final Bundle savedInstanceState) {
+            mCompositeSubscription = new CompositeSubscription();
 
             final View rootView = inflater.inflate(R.layout.fragment_weather, container, false);
             mLocationNameTextView = (TextView) rootView.findViewById(R.id.location_name);
