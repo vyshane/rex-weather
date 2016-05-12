@@ -19,6 +19,7 @@ import rx.functions.Func1;
 public class WeatherService {
     // We are implementing against version 2.5 of the Open Weather Map web service.
     private static final String WEB_SERVICE_BASE_URL = "http://api.openweathermap.org/data/2.5";
+    private static final String API_KEY = "insert your api key here";
     private final OpenWeatherMapWebService mWebService;
 
     public WeatherService() {
@@ -39,11 +40,11 @@ public class WeatherService {
     }
 
     private interface OpenWeatherMapWebService {
-        @GET("/weather?units=metric")
+        @GET("/weather?units=metric&apikey=" + API_KEY)
         Observable<CurrentWeatherDataEnvelope> fetchCurrentWeather(@Query("lon") double longitude,
                                                                    @Query("lat") double latitude);
 
-        @GET("/forecast/daily?units=metric&cnt=7")
+        @GET("/forecast/daily?units=metric&cnt=7&apikey=" + API_KEY)
         Observable<WeatherForecastListDataEnvelope> fetchWeatherForecasts(
                 @Query("lon") double longitude, @Query("lat") double latitude);
     }

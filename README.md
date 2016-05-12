@@ -46,6 +46,11 @@ onError callbacks. You're building pipelines.
 The app uses [OpenWeatherMap](http://openweathermap.org/) to fetch the current
 weather as well as the seven day forecast.
 
+Because of the new policy of [OpenWeatherMap](http://openweathermap.org/),
+we need to provide API key to the requests we made. You can see the detailed information
+in [here](http://openweathermap.org/faq#error401). Please insert your API key that you get
+after register from [OpenWeatherMap](http://openweathermap.org/) to WeatherService.java
+
 ### Current Weather
 
 The current weather can be obtained by making a call similar to the following:
