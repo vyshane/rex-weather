@@ -2,9 +2,9 @@
 
 RexWeather is a sample Android Studio project demonstrating the use of
 Retrofit and RxJava to interact with web services. 
-[Link to the blog post](http://www.node.mu/2014/07/02/using-retrofit-and-rxjava-to-interact-with-web-services-on-android/).
+[Link to the blog post](https://vyshane.com/2014/07/02/using-retrofit-and-rxjava-to-interact-with-web-services-on-android/).
 
-![RexWeather Screenwhot](http://www.node.mu/images/rexweather.png)
+![RexWeather Screenwhot](https://vyshane.com/images/rexweather.png)
 
 
 ## Retrofit, by Square
